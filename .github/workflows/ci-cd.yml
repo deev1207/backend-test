@@ -26,6 +26,8 @@ jobs:
         timeout-minutes: 5
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
+          CI: true
+
 
       - name: Build Docker image
         run: docker build -t user-management-api .

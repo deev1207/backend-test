@@ -18,21 +18,13 @@ jobs:
         with:
           node-version: '20'
         
-      # Install direnv to load .env file
-      - name: Install direnv
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y direnv
-
-      # Load environment variables from .env file
-      - name: Load .env file
-        run: direnv allow
-
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
         run: npm test
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
 
       - name: Build Docker image
         run: docker build -t user-management-api .

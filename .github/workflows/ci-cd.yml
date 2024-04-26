@@ -23,6 +23,7 @@ jobs:
 
       - name: Run tests
         run: npm test
+        timeout-minutes: 0.5
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
 
